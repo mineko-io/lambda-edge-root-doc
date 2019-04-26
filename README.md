@@ -6,6 +6,7 @@ You can configure behavior of this method:
 
 * `urlPart`: First part of request to origin (default: `''`)
 * `rootDoc`: The root document (default: `index.html`)
+* `log`: Enables logging to console
 
 ## Usage
 Just add the package to your deployment package to lambda.
