@@ -1,13 +1,12 @@
 language: node_js
-node_js: 
-  - "8"
-  - "10"
+node_js:
+- '8'
+- '10'
 install:
-  - npm install
+- npm install
 cache:
   directories:
-    - node_modules
-
+  - node_modules
 deploy:
   provider: npm
   email: tech+npm@mineko.de
@@ -16,3 +15,6 @@ deploy:
   on:
     tags: true
     repo: mineko-io/lambda-edge-root-doc
+env:
+  global:
+    secure: SIJGrZbwm/xfNPDFHWgMhsL+P8WiVeiXbrUcUPOj/34Ayyqmxz1loaYTsxm2JoEjtESEnGCxjTe3OhxBQIP89io+ec+iiI9/rLu8gEt5D4nxEmlgJvy2tzR0HYeF4rzd7mlKLpDoFaXjkPpuKZ7h7BNmhyULlelNfOGnPqxe4lDGC3vqobAql2YZr2Z7DYeHjZZ8RzkoiXV2vOcWcq5QuEdVlWnveZl8FgHemSfr9Qiht/U8HFVQYRnuFghqaqOcqgJv6Ei9Xb+L0ct/hAdHHAnJnzeuc3VnSiNBWWX/xe4WP1qYsrt7QHdMEEJ9ziJtus0/QjjCfgr/PinHBMqoao3iRxnKcw21agSx+oj1LhtS8HGaTXY6LBeq7pCtKpPIqQb3CvqXOW6uc2ssmYkludZO/kR/tbRKgPARV6//IaszFole1fTyPAHfH5FQkYOPofyyUn10CWqm1FG3o2v+UmUDSXHL8gSjUm6SPqVT/vgm6echWMw2NAxI3+jmrPuQ9hf9yzSw58xwGjG7mCznOfRq5pizp3uhSRy4dq0W4jbWx4VF7l7jVIhktCDkxxXYpIWY6mmNm1pL8Rboo+vW5A3GQJ9z5eqXq2v7Coq52nJVLSlove/5eS8gDAUXh8ju4s4zHuZTZ8VpNh1p+FD8EGrobmcnf57igNdXc74bxD8=
