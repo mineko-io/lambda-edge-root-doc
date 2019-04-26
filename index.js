@@ -1,18 +1,18 @@
+const getRequest = event => event.Records[0].cf.request
+const logging = msg => console.log(msg)
+
 module.exports = (config = {}) => async event => {
-    const uriPart = config.uriPart || ''
-    const rootDoc = config.rootDoc || '/index.html'
-    const request = event.Records[0].cf.request
-    const oldUri = request.uri
-    var newUri = oldUri
+    const { uriPart = '', rootDoc = '/index.html', log = false } = config
+    
+    const request = getRequest(event)
+    const uri = request.uri
 
-    if (newUri.endsWith('/'))
-        newUri = `${uriPart}${rootDoc}`
+    log && logging(`Old URI: ${uri}`)
 
-    if (config.log) {
-        console.log(`Old URI: ${oldUri}`)
-        console.log(`New URI: ${newUri}`)
+    if (uri.endsWith('/')) {
+        request.uri = `${uriPart}${rootDoc}`
+        log && logging(`New URI: ${request.uri}`)
     }
 
-    request.uri = newUri
     return request
 }
