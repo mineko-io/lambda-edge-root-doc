@@ -1,4 +1,5 @@
 # Lambda Edge Root Doc
+[![Build Status](https://travis-ci.org/mineko-io/lambda-edge-root-doc.svg?branch=master)](https://travis-ci.org/mineko-io/lambda-edge-root-doc) [![Maintainability](https://api.codeclimate.com/v1/badges/b76fb2fec34f0f51cde4/maintainability)](https://codeclimate.com/github/mineko-io/lambda-edge-root-doc/maintainability)
 This module provides a method to define the root document for origin requests from cloudfront in Lambda@Edge.
 
 ## Configuration
