@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/mineko-io/lambda-edge-root-doc/issues"
   },
-  "homepage": "https://github.com/mineko-io/lambda-edge-root-doc#readme"
+  "homepage": "https://github.com/mineko-io/lambda-edge-root-doc#readme",
+  "publishConfig": {
+    "access": "public"
+  }
 }
