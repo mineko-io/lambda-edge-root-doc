@@ -1,0 +1,25 @@
+{
+  "name": "@mineko-io/lambda-edge-root-doc",
+  "version": "1.0.0",
+  "description": "Will define root doc for lambda@edge based on given path",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mineko-io/lambda-edge-root-doc.git"
+  },
+  "keywords": [
+    "lambda",
+    "cloudfront",
+    "lambda@edge",
+    "edge"
+  ],
+  "author": "Mineko GmbH",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mineko-io/lambda-edge-root-doc/issues"
+  },
+  "homepage": "https://github.com/mineko-io/lambda-edge-root-doc#readme"
+}
