@@ -1,6 +1,6 @@
 {
   "name": "@mineko-io/lambda-edge-root-doc",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Will define root doc for lambda@edge based on given path",
   "main": "index.js",
   "scripts": {
@@ -25,5 +25,9 @@
   "homepage": "https://github.com/mineko-io/lambda-edge-root-doc#readme",
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "webpack": "^4.33.0",
+    "webpack-cli": "^3.3.2"
   }
 }
