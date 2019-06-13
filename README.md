@@ -10,8 +10,9 @@ You can configure behavior of this method:
 
 * `urlPart`: First part of request to origin (default: `''`)
 * `rootDoc`: The root document (default: `index.html`)
-* `log`: Enables logging to console
+* `log`: Enables logging to console  (default: `false`)
 * `replaceUri`: Indicates if the hole uri get's replaced by new one or to keep the old uri and only to concatenate (default: `true`)
+* `onlyFirstPart`: Applies only if `replaceUri` is `false`. Will take only the first part of old uri to the new one. (default: `false`)
 
 ## Usage
 Just add the package to your deployment package to lambda.
