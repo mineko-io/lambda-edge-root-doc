@@ -1,0 +1,11 @@
+bitbucket-pipelines.yml
+tsconfig*
+.nycrc*
+.eslint*
+.babel*
+dist/test
+src
+test
+.nyc_output
+coverage
+webpack.config.js

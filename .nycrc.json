@@ -1,0 +1,24 @@
+{
+    "check-coverage": true,
+    "include": [
+        "src/**"
+    ],
+    "extension": [
+        ".ts"
+    ],
+    "exclude": [
+        "typings",
+        "**/*.d.ts",
+        "**/*.test.ts",
+        "**/*.spec.ts",
+        "**/index.ts"
+    ],
+    "reporter": [
+        "text"
+    ],
+    "all": true,
+    "branches": 100,
+    "lines": 100,
+    "functions": 100,
+    "statements": 100
+}
