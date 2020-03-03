@@ -13,7 +13,7 @@ You can configure behavior of this method:
 * `log`: Enables logging to console  (default: `false`)
 
 ## Usage
-How to useit:
+How to use it:
 
 ### Install
 ```bash
