@@ -26,7 +26,7 @@ import DefineRootDoc from '@mineko-io/lambda-edge-root-doc';
 
 exports.handler = DefineRootDoc.getCloudfrontRequestHandler({
     log: true,
-    newUriCallback: (request: AWSLambda.CloudFrontRequest) => {
+    newUriCallback: (request: AWSLambda.CloudFrontRequest): AWSLambda.CloudFrontRequest => {
         request.uri = `${request.uri}index.html`;
         return request;
     };

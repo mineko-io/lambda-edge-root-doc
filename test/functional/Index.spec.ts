@@ -20,7 +20,7 @@ export default class IndexSpec {
 
     @Test()
     itDoesNothingIfUriDoesNotEndWithASlash() {
-      const newUriCallback = (request: AWSLambda.CloudFrontRequest) => {
+      const newUriCallback = (request: AWSLambda.CloudFrontRequest): AWSLambda.CloudFrontRequest => {
         request.uri = `${request.uri}index.html`;
         return request;
       };
@@ -33,7 +33,7 @@ export default class IndexSpec {
     @Test()
     itDoesAConsoleLogIfConfigSet() {
       this.consoleLogSpy = SpyOn(console, 'log');
-      const newUriCallback = (request: AWSLambda.CloudFrontRequest) => {
+      const newUriCallback = (request: AWSLambda.CloudFrontRequest): AWSLambda.CloudFrontRequest => {
         request.uri = `${request.uri}index.html`;
         return request;
       };
