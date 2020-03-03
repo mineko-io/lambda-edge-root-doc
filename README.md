@@ -1,20 +1,18 @@
 # Lambda Edge Root Doc
 
 This module provides a method to define the root document for origin requests from cloudfront in Lambda@Edge.
-Each origin request which will end with a trailingslash `/` will be transformed to configured `<urlPart><rootDoc>`.
+For each request which ends with a trailingslash `/` the `newUriCallback` gets called.
+
 Useful method for Lambda@Edge for ReactJS applications deployed to AWS S3 with a main `index.html` file.
 
 ## Configuration
 You can configure behavior of this method:
 
-* `urlPart`: First part of request to origin (default: `''`)
-* `rootDoc`: The root document (default: `index.html`)
+* `newUriCallback`: Callback method which gets the cloudfront request object. Must return a cloudfront request objecct.
 * `log`: Enables logging to console  (default: `false`)
-* `replaceUri`: Indicates if the hole uri get's replaced by new one or to keep the old uri and only to concatenate (default: `true`)
-* `onlyFirstPart`: Applies only if `replaceUri` is `false`. Will take only the first part of old uri to the new one. (default: `false`)
 
 ## Usage
-Just add the package to your deployment package to lambda.
+How to useit:
 
 ### Install
 ```bash
@@ -23,12 +21,14 @@ npm i -S @mineko-io/lambda-edge-root-doc
 
 ### Example
 Use it on your Lambda@Edge function like this:
-```js
-const defineRootDoc = require('@mineko-io/lambda-edge-root-doc')
+```ts
+import DefineRootDoc from '@mineko-io/lambda-edge-root-doc';
 
-const config = {
-    urlPart: '/my-url',
-    rootDoc: '/my-index.html'
-}
-exports.handler = defineRootDoc(config)
+exports.handler = DefineRootDoc.getCloudfrontRequestHandler({
+    log: true,
+    newUriCallback: (request: AWSLambda.CloudFrontRequest) => {
+        request.uri = `${request.uri}index.html`;
+        return request;
+    };
+})
 ```

@@ -2,12 +2,12 @@ import Config from './Config';
 import { CloudfrontRequestEventHandler } from './CloudfrontRequestEventHandler';
 
 export default class Handler {
-  getNewUri(config: Config): CloudfrontRequestEventHandler {
+  getCloudfrontRequestHandler(config: Config): CloudfrontRequestEventHandler {
     return (event: AWSLambda.CloudFrontRequestEvent) => {
       const request = this.getRequest(event);
       if (!request.uri.endsWith('/')) return request;
 
-      const newRequest = config.getNewUriCallback(request);
+      const newRequest = config.newUriCallback(request);
       if (config.log) console.log(`Redirecting from ${request.uri} to ${newRequest.uri}`); // eslint-disable-line
       return newRequest;
     };

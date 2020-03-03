@@ -1,6 +1,6 @@
-import { GetNewUriCallback } from './GetNewUriCallback';
+import { NewUriCallback } from './NewUriCallback';
 
 export default interface Config {
     log?: boolean;
-    getNewUriCallback: GetNewUriCallback;
+    newUriCallback: NewUriCallback;
 }

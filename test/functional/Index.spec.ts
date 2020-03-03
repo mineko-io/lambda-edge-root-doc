@@ -8,24 +8,24 @@ export default class IndexSpec {
 
     @Test()
     itRedirectToNewUri() {
-      const getNewUriCallback = (request: AWSLambda.CloudFrontRequest) => {
+      const newUriCallback = (request: AWSLambda.CloudFrontRequest) => {
         request.uri = `${request.uri}index.html`;
         return request;
       };
 
-      const actual = this.getInstance({ getNewUriCallback })(this.getEvent('https://my.url/path/'));
+      const actual = this.getInstance({ newUriCallback })(this.getEvent('https://my.url/path/'));
 
       Expect(actual.uri).toEqual('https://my.url/path/index.html');
     }
 
     @Test()
     itDoesNothingIfUriDoesNotEndWithASlash() {
-      const getNewUriCallback = (request: AWSLambda.CloudFrontRequest) => {
+      const newUriCallback = (request: AWSLambda.CloudFrontRequest) => {
         request.uri = `${request.uri}index.html`;
         return request;
       };
 
-      const actual = this.getInstance({ getNewUriCallback })(this.getEvent('https://my.url/path'));
+      const actual = this.getInstance({ newUriCallback })(this.getEvent('https://my.url/path'));
 
       Expect(actual.uri).toEqual('https://my.url/path');
     }
@@ -33,13 +33,13 @@ export default class IndexSpec {
     @Test()
     itDoesAConsoleLogIfConfigSet() {
       this.consoleLogSpy = SpyOn(console, 'log');
-      const getNewUriCallback = (request: AWSLambda.CloudFrontRequest) => {
+      const newUriCallback = (request: AWSLambda.CloudFrontRequest) => {
         request.uri = `${request.uri}index.html`;
         return request;
       };
 
       this.getInstance({
-        getNewUriCallback,
+        newUriCallback,
         log: true,
       })(this.getEvent('https://my.url/path/'));
 
@@ -47,7 +47,7 @@ export default class IndexSpec {
     }
 
     private getInstance(config: Config): CloudfrontRequestEventHandler {
-      return Handler.getNewUri(config);
+      return Handler.getCloudfrontRequestHandler(config);
     }
 
     private getEvent(uri: string): AWSLambda.CloudFrontRequestEvent {
