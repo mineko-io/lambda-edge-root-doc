@@ -1,10 +1,16 @@
 {
   "name": "@mineko-io/lambda-edge-root-doc",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "description": "Will define root doc for lambda@edge based on given path",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\""
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build": "tsc",
+    "run-tests": "TS_NODE_FILES=true alsatian \"./test/**/*.spec.ts\"",
+    "test": "TS_NODE_FILES=true nyc ts-node test/runner.ts",
+    "analyse": "eslint src/* --ext ts --ext tsx",
+    "run-test": "TS_NODE_FILES=true alsatian --tap"
   },
   "repository": {
     "type": "git",
@@ -24,5 +30,32 @@
   "homepage": "https://github.com/mineko-io/lambda-edge-root-doc#readme",
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "@fluffy-spoon/substitute": "^1.112.0",
+    "@types/aws-lambda": "^8.10.45",
+    "@types/axios": "^0.14.0",
+    "@types/deep-equal": "^1.0.1",
+    "@types/ink": "^2.0.3",
+    "@types/node": "^13.7.7",
+    "@types/qs": "^6.9.1",
+    "@types/react-gtm-module": "^2.0.0",
+    "@types/uuid": "^7.0.0",
+    "@typescript-eslint/eslint-plugin": "^2.21.0",
+    "@typescript-eslint/parser": "^2.21.0",
+    "alsatian": "^3.2.1",
+    "deep-equal": "^2.0.1",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-standard": "^4.0.1",
+    "nyc": "^15.0.0",
+    "tap-bark": "^2.3.1",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.8.3"
   }
 }

@@ -1,0 +1,63 @@
+{
+  "env": {
+    "browser": true
+  },
+  "extends": ["airbnb"],
+  "parserOptions": {
+    "ecmaVersion": 2019,
+    "sourceType": "module"
+  },
+  "rules": {
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "class-methods-use-this": "off",
+    "semi": "off",
+    "@typescript-eslint/semi": ["error"],
+    "no-unused-vars": "off",
+    "no-useless-constructor": "off",
+    "no-empty-function": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "args": "after-used",
+        "ignoreRestSiblings": false
+      }
+    ],
+    "no-console": [
+      "error",
+      {
+        "allow": ["debug"]
+      }
+    ],
+    "camelcase": [
+      "error",
+      {
+        "allow": ["google_tag_manager", "grant_type", "access_token"]
+      }
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 120
+      }
+    ]
+  },
+  "plugins": ["@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
+}

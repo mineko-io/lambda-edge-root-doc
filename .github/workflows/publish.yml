@@ -1,0 +1,44 @@
+name: Publish
+on:
+  push:
+    tags:
+      - '*'
+jobs:
+  default:
+    name: Publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '13.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Run tests
+        run: npm test
+
+      - name: Analyse code base
+        run: npm run analyse
+
+      - name: Publish to package registry
+        run: npm run build && npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2.0.0
+        env:
+          SLACK_CHANNEL: changelog
+          SLACK_COLOR: '#3278BD'
+          SLACK_ICON: https://avatars.slack-edge.com/2019-07-30/711003864400_85322d69da0c86ef5a09_512.png
+          SLACK_TITLE: Deployment
+          SLACK_USERNAME: DevTeam Info
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
