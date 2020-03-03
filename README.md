@@ -9,7 +9,7 @@ Useful method for Lambda@Edge for ReactJS applications deployed to AWS S3 with a
 ## Configuration
 You can configure behavior of this method:
 
-* `newUriCallback`: Callback method which gets the cloudfront request object. Must return a cloudfront request objecct.
+* `newUriCallback`: Callback method which gets the cloudfront request object. Must return a cloudfront request object.
 * `log`: Enables logging to console  (default: `false`)
 
 ## Usage
