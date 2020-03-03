@@ -7,43 +7,43 @@ export default class IndexSpec {
     consoleLogSpy!: RestorableFunctionSpy;
 
     @Test()
-    itRedirectToNewUri() {
+    async itRedirectToNewUri() {
       const newUriCallback = (request: AWSLambda.CloudFrontRequest) => {
         request.uri = `${request.uri}index.html`;
         return request;
       };
 
-      const actual = this.getInstance({ newUriCallback })(this.getEvent('https://my.url/path/'));
+      const actual = await this.getInstance({ newUriCallback })(this.getEvent('https://my.url/path/'));
 
       Expect(actual.uri).toEqual('https://my.url/path/index.html');
     }
 
     @Test()
-    itDoesNothingIfUriDoesNotEndWithASlash() {
+    async itDoesNothingIfUriDoesNotEndWithASlash() {
       const newUriCallback = (request: AWSLambda.CloudFrontRequest): AWSLambda.CloudFrontRequest => {
         request.uri = `${request.uri}index.html`;
         return request;
       };
 
-      const actual = this.getInstance({ newUriCallback })(this.getEvent('https://my.url/path'));
+      const actual = await this.getInstance({ newUriCallback })(this.getEvent('https://my.url/path'));
 
       Expect(actual.uri).toEqual('https://my.url/path');
     }
 
     @Test()
-    itDoesAConsoleLogIfConfigSet() {
+    async itDoesAConsoleLogIfConfigSet() {
       this.consoleLogSpy = SpyOn(console, 'log');
       const newUriCallback = (request: AWSLambda.CloudFrontRequest): AWSLambda.CloudFrontRequest => {
         request.uri = `${request.uri}index.html`;
         return request;
       };
 
-      this.getInstance({
+      await this.getInstance({
         newUriCallback,
         log: true,
       })(this.getEvent('https://my.url/path/'));
 
-      Expect(this.consoleLogSpy).toHaveBeenCalledWith('Redirecting from https://my.url/path/index.html to https://my.url/path/index.html');
+      Expect(this.consoleLogSpy).toHaveBeenCalledWith('Redirecting from https://my.url/path/ to https://my.url/path/index.html');
     }
 
     private getInstance(config: Config): CloudfrontRequestEventHandler {

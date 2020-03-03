@@ -1,1 +1,1 @@
-export type CloudfrontRequestEventHandler = (event: AWSLambda.CloudFrontRequestEvent) => AWSLambda.CloudFrontRequest;
+export type CloudfrontRequestEventHandler = (event: AWSLambda.CloudFrontRequestEvent) => Promise<AWSLambda.CloudFrontRequest>;
