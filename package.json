@@ -1,6 +1,6 @@
 {
   "name": "@mineko-io/lambda-edge-root-doc",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Will define root doc for lambda@edge based on given path",
   "main": "dist/index.js",
   "scripts": {
