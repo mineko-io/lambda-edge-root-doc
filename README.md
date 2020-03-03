@@ -1,4 +1,5 @@
 # Lambda Edge Root Doc
+![](https://github.com/mineko-io/lambda-edge-root-doc/workflows/Build%20%26%20Test/badge.svg)
 
 This module provides a method to define the root document for origin requests from cloudfront in Lambda@Edge.
 For each request which ends with a trailingslash `/` the `newUriCallback` gets called.
