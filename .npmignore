@@ -9,3 +9,4 @@ test
 .nyc_output
 coverage
 webpack.config.js
+.github
